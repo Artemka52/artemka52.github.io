@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Промисы — JavaScript Docs</title>
+    <link rel="stylesheet" href="../style.css" />
+  </head>
+  <body>
+    <header>
+      <h1><a href="../index.html">JavaScript Docs</a></h1>
+      <nav>
+        <a href="../index.html">Главная</a> |
+        <a href="../getting-started/">Начало работы</a> |
+        <a href="../basics/">Основы</a> | <a href="../functions/">Функции</a> |
+        <a href="../objects/">Объекты</a> |
+        <a href="index.html">Асинхронность</a> |
+        <a href="../examples/">Примеры</a> | <a href="../faq.html">FAQ</a> |
+        <a href="../changelog.html">История версий</a>
+      </nav>
+      <hr />
+    </header>
+
+    <main>
+      <p>
+        <a href="../index.html">Главная</a> /
+        <a href="index.html">Асинхронность</a> / Промисы
+      </p>
+
+      <h2>Промисы (Promises)</h2>
+
+      <p>
+        <code>Promise</code> — объект, представляющий результат асинхронной
+        операции. Три состояния:
+      </p>
+      <ul>
+        <li><strong>pending</strong> — ожидание</li>
+        <li><strong>fulfilled</strong> — успешно выполнено</li>
+        <li><strong>rejected</strong> — отклонено</li>
+      </ul>
+
+      <h3>Создание</h3>
+      <pre><code>const promise = new Promise((resolve, reject) => {
+  setTimeout(() => {
+    const success = true;
+    if (success) resolve('Готово!');
+    else reject(new Error('Ошибка'));
+  }, 1000);
+});
+</code></pre>
+
+      <h3>Потребление</h3>
+      <pre><code>promise
+  .then(value => console.log(value))
+  .catch(error => console.error(error))
+  .finally(() => console.log('Завершено'));
+</code></pre>
+
+      <h3>Цепочки</h3>
+      <pre><code>fetch('/api/user/1')
+  .then(res => res.json())
+  .then(user => fetch(`/api/posts?user=${user.id}`))
+  .then(res => res.json())
+  .then(posts => console.log(posts))
+  .catch(err => console.error(err));
+</code></pre>
+
+      <h3>Promise.all — параллельно, ждать всех</h3>
+      <pre><code>const [users, posts, comments] = await Promise.all([
+  fetch('/api/users').then(r => r.json()),
+  fetch('/api/posts').then(r => r.json()),
+  fetch('/api/comments').then(r => r.json()),
+]);
+</code></pre>
+
+      <h3>Promise.allSettled — не падает при ошибке</h3>
+      <pre><code>const results = await Promise.allSettled([
+  fetch('/ok'),
+  fetch('/fail'),
+]);
+// [{ status: 'fulfilled', value }, { status: 'rejected', reason }]
+</code></pre>
+
+      <h3>Promise.race — первый завершившийся</h3>
+      <pre><code>const fastest = await Promise.race([
+  fetch('/server-a'),
+  fetch('/server-b'),
+]);
+</code></pre>
+
+      <h3>Promise.any — первый успешный</h3>
+      <pre><code>const firstOk = await Promise.any([
+  fetch('/mirror-1'),
+  fetch('/mirror-2'),
+  fetch('/mirror-3'),
+]);
+</code></pre>
+
+      <h3>Статические методы</h3>
+      <ul>
+        <li><code>Promise.resolve(v)</code> — выполненный промис</li>
+        <li><code>Promise.reject(e)</code> — отклонённый промис</li>
+        <li>
+          <code>Promise.all([...])</code> — ждёт все, падает при первой ошибке
+        </li>
+        <li>
+          <code>Promise.allSettled([...])</code> — ждёт все, возвращает статусы
+        </li>
+        <li><code>Promise.race([...])</code> — первый завершившийся</li>
+        <li><code>Promise.any([...])</code> — первый успешный</li>
+      </ul>
+
+      <p><a href="async-await.html">Дальше: async/await →</a></p>
+    </main>
+
+    <footer>
+      <hr />
+      <p>
+        © 2026 JavaScript Docs. Учебный проект для лабораторных работ по CDN.
+      </p>
+    </footer>
+  </body>
+</html>

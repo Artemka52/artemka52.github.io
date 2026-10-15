@@ -1,17 +1,89 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <title>Мой сайт</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <h1>Главная страница</h1>
-    <nav>
-        <a href="about/">О сайте</a> |
-        <a href="blog/post1.html">Блог</a>
-    </nav>
-    <p>Это главная страница моего статического сайта.</p>
-    <img src="images/test.jpg" alt="Тестовое изображение" width="200px" >
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JavaScript Docs - обзор языка</title>
+    <link rel="icon" type="image/jpeg" href="images/test.jpg" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <h1>JavaScript Docs</h1>
+      <nav>
+        <a href="index.html">Главная</a> |
+        <a href="getting-started/">Начало работы</a> |
+        <a href="basics/">Основы</a> | <a href="functions/">Функции</a> |
+        <a href="objects/">Объекты</a> | <a href="async/">Асинхронность</a> |
+        <a href="examples/">Примеры</a> | <a href="faq.html">FAQ</a> |
+        <a href="changelog.html">История версий</a>
+      </nav>
+      <hr />
+    </header>
+
+    <main>
+      <h2>Обзор JavaScript</h2>
+
+      <p>
+        <strong>JavaScript</strong> - мультипарадигменный язык программирования,
+        стандартизированный как <em>ECMAScript</em>. Изначально создан для
+        браузеров, сейчас используется и на сервере (Node.js, Deno, Bun).
+      </p>
+
+      <h3>Ключевые особенности</h3>
+      <ul>
+        <li>Динамическая типизация.</li>
+        <li>Прототипное наследование.</li>
+        <li>Функции - объекты первого класса.</li>
+        <li>Однопоточность и Event Loop для асинхронности.</li>
+        <li>
+          JIT-компиляция в современных движках (V8, SpiderMonkey,
+          JavaScriptCore).
+        </li>
+      </ul>
+
+      <h3>Пример кода</h3>
+      <pre><code>// Первая программа
+const greeting = 'Hello, World!';
+console.log(greeting);
+</code></pre>
+
+      <h3>Разделы документации</h3>
+      <ul>
+        <li>
+          <a href="getting-started/">Начало работы</a> - установка Node.js,
+          первая программа.
+        </li>
+        <li>
+          <a href="basics/">Основы</a> - синтаксис, типы данных, операторы.
+        </li>
+        <li>
+          <a href="functions/">Функции</a> - объявления, стрелочные функции,
+          замыкания.
+        </li>
+        <li><a href="objects/">Объекты</a> - свойства, прототипы, классы.</li>
+        <li>
+          <a href="async/">Асинхронность</a> - Event Loop, промисы, async/await.
+        </li>
+        <li><a href="examples/">Примеры</a> - практические задачи.</li>
+        <li><a href="faq.html">FAQ</a> - частые вопросы.</li>
+        <li>
+          <a href="changelog.html">История версий</a> - обновления ECMAScript.
+        </li>
+      </ul>
+
+      <h3>Кому подходит</h3>
+      <p>
+        Документация рассчитана на начинающих разработчиков, знакомых с основами
+        программирования.
+      </p>
+    </main>
+
+    <footer>
+      <hr />
+      <p>
+        © 2026 JavaScript Docs. Учебный проект для лабораторных работ по CDN.
+      </p>
+    </footer>
+  </body>
 </html>

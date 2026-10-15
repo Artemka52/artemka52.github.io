@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Функции - JavaScript Docs</title>
+    <link rel="stylesheet" href="../style.css" />
+  </head>
+  <body>
+    <header>
+      <h1><a href="../index.html">JavaScript Docs</a></h1>
+      <nav>
+        <a href="../index.html">Главная</a> |
+        <a href="../getting-started/">Начало работы</a> |
+        <a href="../basics/">Основы</a> | <a href="index.html">Функции</a> |
+        <a href="../objects/">Объекты</a> |
+        <a href="../async/">Асинхронность</a> |
+        <a href="../examples/">Примеры</a> | <a href="../faq.html">FAQ</a> |
+        <a href="../changelog.html">История версий</a>
+      </nav>
+      <hr />
+    </header>
+
+    <main>
+      <p><a href="../index.html">Главная</a> / Функции</p>
+
+      <h2>Функции</h2>
+
+      <h3>Способы объявления</h3>
+      <pre><code>// Function Declaration - поднимается
+function add(a, b) {
+  return a + b;
+}
+
+// Function Expression
+const sub = function (a, b) {
+  return a - b;
+};
+
+// Стрелочная функция
+const mul = (a, b) => a * b;
+
+// Стрелочная с блоком
+const div = (a, b) => {
+  if (b === 0) throw new Error('Division by zero');
+  return a / b;
+};
+</code></pre>
+
+      <h3>Параметры по умолчанию</h3>
+      <pre><code>function greet(name = 'гость', greeting = 'Привет') {
+  return `${greeting}, ${name}!`;
+}
+
+greet();                  // 'Привет, гость!'
+greet('Alex');            // 'Привет, Alex!'
+greet('Alex', 'Здорово'); // 'Здорово, Alex!'
+</code></pre>
+
+      <h3>Rest-параметры</h3>
+      <pre><code>function sum(...nums) {
+  return nums.reduce((s, n) => s + n, 0);
+}
+sum(1, 2, 3, 4, 5); // 15
+</code></pre>
+
+      <h3>Стрелочные vs обычные</h3>
+      <ul>
+        <li>
+          <code>this</code> - у обычной динамический, у стрелочной лексический.
+        </li>
+        <li><code>arguments</code> - есть у обычной, нет у стрелочной.</li>
+        <li>
+          <code>new</code> - работает с обычной, не работает со стрелочной.
+        </li>
+        <li>Hoisting - есть у function declaration, нет у стрелочных.</li>
+      </ul>
+
+      <h3>Функции высшего порядка</h3>
+      <pre><code>const nums = [1, 2, 3, 4, 5];
+
+const doubled = nums.map(n => n * 2);    // [2, 4, 6, 8, 10]
+const evens   = nums.filter(n => n % 2 === 0); // [2, 4]
+const total   = nums.reduce((acc, n) => acc + n, 0); // 15
+</code></pre>
+
+      <h3>Рекурсия</h3>
+      <pre><code>function factorial(n) {
+  if (n <= 1) return 1;
+  return n * factorial(n - 1);
+}
+
+factorial(5); // 120
+</code></pre>
+
+      <p><a href="closures.html">Дальше: Замыкания →</a></p>
+    </main>
+
+    <footer>
+      <hr />
+      <p>
+        © 2026 JavaScript Docs. Учебный проект для лабораторных работ по CDN.
+      </p>
+    </footer>
+  </body>
+</html>

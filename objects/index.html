@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Объекты и прототипы - JavaScript Docs</title>
+    <link rel="stylesheet" href="../style.css" />
+  </head>
+  <body>
+    <header>
+      <h1><a href="../index.html">JavaScript Docs</a></h1>
+      <nav>
+        <a href="../index.html">Главная</a> |
+        <a href="../getting-started/">Начало работы</a> |
+        <a href="../basics/">Основы</a> | <a href="../functions/">Функции</a> |
+        <a href="index.html">Объекты</a> |
+        <a href="../async/">Асинхронность</a> |
+        <a href="../examples/">Примеры</a> | <a href="../faq.html">FAQ</a> |
+        <a href="../changelog.html">История версий</a>
+      </nav>
+      <hr />
+    </header>
+
+    <main>
+      <p><a href="../index.html">Главная</a> / Объекты и прототипы</p>
+
+      <h2>Объекты и прототипы</h2>
+
+      <h3>Создание объектов</h3>
+      <pre><code>// Литерал
+const user = { name: 'Alex', age: 30 };
+
+// Конструктор
+const user2 = new Object();
+user2.name = 'Bob';
+
+// Object.create
+const proto = { greet() { return 'hi'; } };
+const obj = Object.create(proto);
+</code></pre>
+
+      <h3>Доступ к свойствам</h3>
+      <pre><code>const user = { name: 'Alex', 'favorite-color': 'blue' };
+
+user.name;                 // 'Alex'
+user['name'];              // 'Alex'
+user['favorite-color'];    // 'blue'
+user.city;                 // undefined
+</code></pre>
+
+      <h3>Деструктуризация</h3>
+      <pre><code>const { name, age = 18, ...rest } = user;
+</code></pre>
+
+      <h3>Методы объекта</h3>
+      <pre><code>const calc = {
+  value: 0,
+  add(n) { this.value += n; return this; },
+  sub(n) { this.value -= n; return this; },
+};
+
+calc.add(5).sub(2);
+console.log(calc.value); // 3
+</code></pre>
+
+      <h3>Геттеры и сеттеры</h3>
+      <pre><code>const person = {
+  firstName: 'Alex',
+  lastName: 'Ivanov',
+  get fullName() {
+    return `${this.firstName} ${this.lastName}`;
+  },
+  set fullName(value) {
+    [this.firstName, this.lastName] = value.split(' ');
+  },
+};
+
+person.fullName = 'Maria Petrova';
+console.log(person.firstName); // 'Maria'
+</code></pre>
+
+      <h3>Прототипы</h3>
+      <pre><code>const animal = {
+  speak() { return `${this.name} издаёт звук`; },
+};
+
+const dog = Object.create(animal);
+dog.name = 'Rex';
+
+console.log(dog.speak()); // 'Rex издаёт звук'
+</code></pre>
+
+      <h3>Классы</h3>
+      <pre><code>class Animal {
+  constructor(name) { this.name = name; }
+  speak() { return `${this.name} издаёт звук`; }
+}
+
+class Dog extends Animal {
+  constructor(name, breed) {
+    super(name);
+    this.breed = breed;
+  }
+  speak() { return `${this.name} (${this.breed}) лает`; }
+}
+
+const rex = new Dog('Rex', 'Labrador');
+console.log(rex.speak());           // 'Rex (Labrador) лает'
+console.log(rex instanceof Dog);    // true
+console.log(rex instanceof Animal); // true
+</code></pre>
+
+      <h3>Копирование</h3>
+      <pre><code>const a = { x: 1 };
+
+// Поверхностная копия
+const shallow = { ...a };
+
+// Глубокая копия
+const deep = structuredClone(a);
+</code></pre>
+
+      <p><a href="../async/">Дальше: Асинхронность →</a></p>
+    </main>
+
+    <footer>
+      <hr />
+      <p>
+        © 2026 JavaScript Docs. Учебный проект для лабораторных работ по CDN.
+      </p>
+    </footer>
+  </body>
+</html>

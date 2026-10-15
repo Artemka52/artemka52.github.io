@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Замыкания - JavaScript Docs</title>
+    <link rel="stylesheet" href="../style.css" />
+  </head>
+  <body>
+    <header>
+      <h1><a href="../index.html">JavaScript Docs</a></h1>
+      <nav>
+        <a href="../index.html">Главная</a> |
+        <a href="../getting-started/">Начало работы</a> |
+        <a href="../basics/">Основы</a> | <a href="index.html">Функции</a> |
+        <a href="../objects/">Объекты</a> |
+        <a href="../async/">Асинхронность</a> |
+        <a href="../examples/">Примеры</a> | <a href="../faq.html">FAQ</a> |
+        <a href="../changelog.html">История версий</a>
+      </nav>
+      <hr />
+    </header>
+
+    <main>
+      <p>
+        <a href="../index.html">Главная</a> / <a href="index.html">Функции</a> /
+        Замыкания
+      </p>
+
+      <h2>Замыкания (Closures)</h2>
+
+      <p>
+        <strong>Замыкание</strong> - функция, «запоминающая» переменные из
+        внешней области видимости, даже если внешняя функция уже завершилась.
+      </p>
+
+      <h3>Простой пример</h3>
+      <pre><code>function makeCounter() {
+  let count = 0;
+
+  return function () {
+    count++;
+    return count;
+  };
+}
+
+const counter = makeCounter();
+console.log(counter()); // 1
+console.log(counter()); // 2
+console.log(counter()); // 3
+</code></pre>
+
+      <h3>Приватное состояние</h3>
+      <pre><code>function createBankAccount(initial) {
+  let balance = initial;
+
+  return {
+    deposit: (amount) => { balance += amount; },
+    withdraw: (amount) => {
+      if (amount > balance) throw new Error('Недостаточно средств');
+      balance -= amount;
+    },
+    getBalance: () => balance,
+  };
+}
+
+const acc = createBankAccount(100);
+acc.deposit(50);
+acc.withdraw(30);
+console.log(acc.getBalance()); // 120
+console.log(acc.balance);      // undefined
+</code></pre>
+
+      <h3>Фабрики функций</h3>
+      <pre><code>function multiplier(factor) {
+  return (n) => n * factor;
+}
+
+const double = multiplier(2);
+const triple = multiplier(3);
+
+console.log(double(5));  // 10
+console.log(triple(5));  // 15
+</code></pre>
+
+      <h3>Классическая ошибка с var в цикле</h3>
+      <pre><code>// ПЛОХО: var — общая переменная
+for (var i = 0; i < 3; i++) {
+  setTimeout(() => console.log(i), 0);
+}
+// 3, 3, 3
+
+// ХОРОШО: let - новая привязка на каждой итерации
+for (let i = 0; i < 3; i++) {
+  setTimeout(() => console.log(i), 0);
+}
+// 0, 1, 2
+</code></pre>
+
+      <h3>IIFE - Immediately Invoked Function Expression</h3>
+      <pre><code>const module = (function () {
+  const secret = 'hidden';
+  return {
+    reveal: () => secret,
+  };
+})();
+
+console.log(module.reveal()); // 'hidden'
+</code></pre>
+
+      <p><a href="../objects/">Дальше: Объекты →</a></p>
+    </main>
+
+    <footer>
+      <hr />
+      <p>
+        © 2026 JavaScript Docs. Учебный проект для лабораторных работ по CDN.
+      </p>
+    </footer>
+  </body>
+</html>

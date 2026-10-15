@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Начало работы - JavaScript Docs</title>
+    <link rel="stylesheet" href="../style.css" />
+  </head>
+  <body>
+    <header>
+      <h1><a href="../index.html">JavaScript Docs</a></h1>
+      <nav>
+        <a href="../index.html">Главная</a> |
+        <a href="index.html">Начало работы</a> |
+        <a href="../basics/">Основы</a> | <a href="../functions/">Функции</a> |
+        <a href="../objects/">Объекты</a> |
+        <a href="../async/">Асинхронность</a> |
+        <a href="../examples/">Примеры</a> | <a href="../faq.html">FAQ</a> |
+        <a href="../changelog.html">История версий</a>
+      </nav>
+      <hr />
+    </header>
+
+    <main>
+      <p><a href="../index.html">Главная</a> / Начало работы</p>
+
+      <h2>Начало работы</h2>
+
+      <h3>Где запускать JavaScript</h3>
+      <ol>
+        <li>
+          <strong>Браузер</strong> - консоль DevTools (F12) или тег
+          <code>&lt;script&gt;</code>.
+        </li>
+        <li><strong>Node.js</strong> - серверная среда выполнения.</li>
+        <li><strong>Онлайн-песочницы</strong> - CodePen, JSFiddle, Replit.</li>
+      </ol>
+
+      <h3>Установка Node.js</h3>
+      <p>
+        Скачайте LTS-версию с <a href="https://nodejs.org">nodejs.org</a>.
+        Проверьте установку:
+      </p>
+
+      <pre><code>node --version
+// v20.11.0
+npm --version
+// 10.2.4
+</code></pre>
+
+      <h3>Первая программа</h3>
+      <p>Создайте файл <code>hello.js</code>:</p>
+
+      <pre><code>const name = 'Мир';
+console.log(`Привет, ${name}!`);
+
+function greet(who) {
+  return `Hello, ${who}!`;
+}
+
+console.log(greet('JavaScript'));
+</code></pre>
+
+      <p>Запустите командой:</p>
+      <pre><code>node hello.js
+</code></pre>
+
+      <h3>Подключение к HTML</h3>
+      <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;body&gt;
+    &lt;h1&gt;Моя страница&lt;/h1&gt;
+    &lt;script&gt;
+      document.querySelector('h1').textContent = 'Изменено из JS';
+    &lt;/script&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+      <h3>Полезные инструменты</h3>
+      <ul>
+        <li>VS Code - редактор.</li>
+        <li>Node.js + npm - среда и пакеты.</li>
+        <li>ESLint - проверка кода.</li>
+        <li>Prettier - автоформатирование.</li>
+        <li>Vite / Webpack - сборка.</li>
+      </ul>
+
+      <p><a href="../basics/">Дальше: Основы →</a></p>
+    </main>
+
+    <footer>
+      <hr />
+      <p>
+        © 2026 JavaScript Docs. Учебный проект для лабораторных работ по CDN.
+      </p>
+    </footer>
+  </body>
+</html>

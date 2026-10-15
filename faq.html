@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <title>FAQ - JavaScript Docs</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <h1><a href="index.html">JavaScript Docs</a></h1>
+      <nav>
+        <a href="index.html">Главная</a> |
+        <a href="getting-started/">Начало работы</a> |
+        <a href="basics/">Основы</a> | <a href="functions/">Функции</a> |
+        <a href="objects/">Объекты</a> | <a href="async/">Асинхронность</a> |
+        <a href="examples/">Примеры</a> | <a href="faq.html">FAQ</a> |
+        <a href="changelog.html">История версий</a>
+      </nav>
+      <hr />
+    </header>
+
+    <main>
+      <p><a href="index.html">Главная</a> / FAQ</p>
+
+      <h2>Часто задаваемые вопросы</h2>
+
+      <h3>Чем JavaScript отличается от Java?</h3>
+      <p>
+        Это разные языки. Общее только название. Java - компилируемый строго
+        типизированный язык; JavaScript - интерпретируемый динамический.
+      </p>
+
+      <h3>Что такое ECMAScript?</h3>
+      <p>
+        Стандарт, описывающий язык. JavaScript - его реализация. Актуальная
+        версия - ECMAScript 2026 (ES2026). Обновления выходят ежегодно с 2015
+        года.
+      </p>
+
+      <h3>let, const или var?</h3>
+      <ul>
+        <li><code>const</code> - по умолчанию.</li>
+        <li><code>let</code> - если значение будет переприсваиваться.</li>
+        <li><code>var</code> - не использовать в новом коде.</li>
+      </ul>
+
+      <h3>Строгое равенство <code>===</code> и нестрогое <code>==</code>?</h3>
+      <p>
+        Всегда используйте <code>===</code> и <code>!==</code>. Исключение -
+        <code>value == null</code> (ловит одновременно null и undefined).
+      </p>
+
+      <h3>Что такое hoisting?</h3>
+      <p>
+        Механизм поднятия объявлений в начало области видимости.
+        <code>var</code> и function declaration поднимаются, <code>let</code> и
+        <code>const</code> - нет.
+      </p>
+
+      <h3>Почему <code>typeof null === 'object'</code>?</h3>
+      <p>
+        Историческая ошибка первых версий JavaScript. Исправить нельзя - сломает
+        обратную совместимость. Проверяйте <code>value === null</code>.
+      </p>
+
+      <h3>Callback, Promise или async/await?</h3>
+      <p>
+        По умолчанию — <code>async/await</code>. Для параллельных операций -
+        <code>Promise.all / allSettled</code>.
+      </p>
+
+      <h3>Что такое Event Loop?</h3>
+      <p>
+        Механизм, позволяющий однопоточному JavaScript выполнять асинхронные
+        операции. Подробнее — в разделе <a href="async/">Асинхронность</a>.
+      </p>
+
+      <h3>JavaScript и Node.js - это одно и то же?</h3>
+      <p>Нет. JavaScript - язык. Node.js - среда выполнения на движке V8.</p>
+
+      <h3>Где искать документацию?</h3>
+      <ul>
+        <li>
+          <a href="https://developer.mozilla.org/ru/docs/Web/JavaScript"
+            >MDN Web Docs</a
+          >
+          — эталон.
+        </li>
+        <li>
+          <a href="https://tc39.es/ecma262/">ECMAScript Spec</a> - спецификация.
+        </li>
+        <li>
+          <a href="https://javascript.info">javascript.info</a> - учебник.
+        </li>
+      </ul>
+
+      <p><a href="changelog.html">Дальше: История версий →</a></p>
+    </main>
+
+    <footer>
+      <hr />
+      <p>
+        © 2026 JavaScript Docs. Учебный проект для лабораторных работ по CDN.
+      </p>
+    </footer>
+  </body>
+</html>

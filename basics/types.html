@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Типы данных - JavaScript Docs</title>
+    <link rel="stylesheet" href="../style.css" />
+  </head>
+  <body>
+    <header>
+      <h1><a href="../index.html">JavaScript Docs</a></h1>
+      <nav>
+        <a href="../index.html">Главная</a> |
+        <a href="../getting-started/">Начало работы</a> |
+        <a href="index.html">Основы</a> | <a href="../functions/">Функции</a> |
+        <a href="../objects/">Объекты</a> |
+        <a href="../async/">Асинхронность</a> |
+        <a href="../examples/">Примеры</a> | <a href="../faq.html">FAQ</a> |
+        <a href="../changelog.html">История версий</a>
+      </nav>
+      <hr />
+    </header>
+
+    <main>
+      <p>
+        <a href="../index.html">Главная</a> / <a href="index.html">Основы</a> /
+        Типы данных
+      </p>
+
+      <h2>Типы данных</h2>
+
+      <p>В JavaScript 8 типов: 7 примитивов и <code>object</code>.</p>
+
+      <h3>Примитивы</h3>
+      <ul>
+        <li><code>number</code> — 42, 3.14, NaN, Infinity</li>
+        <li><code>bigint</code> — 9007199254740993n</li>
+        <li><code>string</code> — 'hi', "hi", `hi`</li>
+        <li><code>boolean</code> — true / false</li>
+        <li><code>undefined</code> — значение не задано</li>
+        <li><code>null</code> — намеренное отсутствие значения</li>
+        <li><code>symbol</code> — Symbol('id')</li>
+      </ul>
+
+      <h3>Object</h3>
+      <p>Всё остальное - объекты: массивы, функции, даты, Map, Set.</p>
+
+      <pre><code>const obj = { a: 1 };
+const arr = [1, 2, 3];
+const fn  = () => {};
+
+console.log(typeof obj);  // 'object'
+console.log(typeof arr);  // 'object'
+console.log(typeof fn);   // 'function'
+</code></pre>
+
+      <h3>Проверка типа: typeof</h3>
+      <pre><code>typeof 42           // 'number'
+typeof 'hello'      // 'string'
+typeof true         // 'boolean'
+typeof undefined    // 'undefined'
+typeof null         // 'object' — историческая ошибка
+typeof {}           // 'object'
+typeof []           // 'object'
+typeof function(){} // 'function'
+</code></pre>
+
+      <h3>Приведение типов</h3>
+      <pre><code>// Явное
+Number('42')     // 42
+String(42)       // '42'
+Boolean(0)       // false
+
+// Неявное
+'5' + 3          // '53'
+'5' - 3          // 2
++'5'             // 5
+!!'abc'          // true
+</code></pre>
+
+      <h3>Строгое и нестрогое равенство</h3>
+      <pre><code>1 == '1'    // true   (приведение)
+1 === '1'   // false  (без приведения — рекомендуемое)
+null == undefined   // true
+null === undefined  // false
+NaN === NaN         // false
+</code></pre>
+
+      <p>Всегда используйте <code>===</code> и <code>!==</code>.</p>
+
+      <p><a href="operators.html">Дальше: Операторы →</a></p>
+    </main>
+
+    <footer>
+      <hr />
+      <p>
+        © 2026 JavaScript Docs. Учебный проект для лабораторных работ по CDN.
+      </p>
+    </footer>
+  </body>
+</html>

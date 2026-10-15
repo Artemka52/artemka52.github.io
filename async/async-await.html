@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>async / await — JavaScript Docs</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+<header>
+  <h1><a href="../index.html">JavaScript Docs</a></h1>
+  <nav>
+    <a href="../index.html">Главная</a> |
+    <a href="../getting-started/">Начало работы</a> |
+    <a href="../basics/">Основы</a> |
+    <a href="../functions/">Функции</a> |
+    <a href="../objects/">Объекты</a> |
+    <a href="index.html">Асинхронность</a> |
+    <a href="../examples/">Примеры</a> |
+    <a href="../faq.html">FAQ</a> |
+    <a href="../changelog.html">История версий</a>
+  </nav>
+  <hr>
+</header>
+
+<main>
+<p><a href="../index.html">Главная</a> / <a href="index.html">Асинхронность</a> / async/await</p>
+
+<h2>async / await</h2>
+
+<p>Синтаксический сахар над промисами. Позволяет писать асинхронный код «как синхронный».</p>
+
+<h3>Основы</h3>
+<pre><code>async function fetchUser(id) {
+  const res = await fetch(`/api/users/${id}`);
+  if (!res.ok) throw new Error(`HTTP ${res.status}`);
+  return res.json();
+}
+
+const user = await fetchUser(1);
+console.log(user);
+</code></pre>
+
+<p><code>await</code> работает только внутри <code>async</code>-функции или на верхнем уровне модуля.</p>
+
+<h3>Возвращаемое значение</h3>
+<pre><code>async function answer() { return 42; }
+
+answer().then(v => console.log(v)); // 42
+</code></pre>
+
+<h3>Обработка ошибок</h3>
+<pre><code>async function loadData() {
+  try {
+    const res = await fetch('/api/data');
+    return await res.json();
+  } catch (err) {
+    console.error('Ошибка:', err);
+    throw err;
+  } finally {
+    console.log('Загрузка завершена');
+  }
+}
+</code></pre>
+
+<h3>Последовательно vs параллельно</h3>
+<pre><code>// Последовательно — медленно
+const user  = await fetch('/api/user').then(r => r.json());
+const posts = await fetch('/api/posts').then(r => r.json());
+
+// Параллельно — быстро
+const [user2, posts2] = await Promise.all([
+  fetch('/api/user').then(r => r.json()),
+  fetch('/api/posts').then(r => r.json()),
+]);
+</code></pre>
+
+<h3>Циклы с await</h3>
+<pre><code>// Последовательно
+for (const id of [1, 2, 3]) {
+  const user = await fetchUser(id);
+  console.log(user);
+}
+
+// Параллельно
+await Promise.all([1, 2, 3].map(id => fetchUser(id)));
+</code></pre>
+
+<p><strong>Не используйте <code>await</code> внутри <code>forEach</code></strong> — он не дожидается результата.</p>
+
+<h3>Практический пример: retry</h3>
+<pre><code>async function fetchWithRetry(url, attempts = 3) {
+  for (let i = 0; i < attempts; i++) {
+    try {
+      const res = await fetch(url);
+      if (res.ok) return res.json();
+    } catch (err) {
+      if (i === attempts - 1) throw err;
+      await new Promise(r => setTimeout(r, 1000 * (i + 1)));
+    }
+  }
+}
+</code></pre>
+
+<p><a href="../examples/">Дальше: Примеры →</a></p>
+</main>
+
+<footer>
+  <hr>
+  <p>© 2026 JavaScript Docs. Учебный проект для лабораторных работ по CDN.</p>
+</footer>
+
+</body>
+</html>

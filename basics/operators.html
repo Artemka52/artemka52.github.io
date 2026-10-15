@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Операторы - JavaScript Docs</title>
+    <link rel="stylesheet" href="../style.css" />
+  </head>
+  <body>
+    <header>
+      <h1><a href="../index.html">JavaScript Docs</a></h1>
+      <nav>
+        <a href="../index.html">Главная</a> |
+        <a href="../getting-started/">Начало работы</a> |
+        <a href="index.html">Основы</a> | <a href="../functions/">Функции</a> |
+        <a href="../objects/">Объекты</a> |
+        <a href="../async/">Асинхронность</a> |
+        <a href="../examples/">Примеры</a> | <a href="../faq.html">FAQ</a> |
+        <a href="../changelog.html">История версий</a>
+      </nav>
+      <hr />
+    </header>
+
+    <main>
+      <p>
+        <a href="../index.html">Главная</a> / <a href="index.html">Основы</a> /
+        Операторы
+      </p>
+
+      <h2>Операторы</h2>
+
+      <h3>Арифметические</h3>
+      <pre><code>10 + 3    // 13
+10 - 3    // 7
+10 * 3    // 30
+10 / 3    // 3.3333...
+10 % 3    // 1  (остаток)
+10 ** 3   // 1000 (степень)
+</code></pre>
+
+      <h3>Присваивание</h3>
+      <pre><code>let x = 5;
+x += 2;   // 7
+x -= 1;   // 6
+x *= 2;   // 12
+x /= 3;   // 4
+x **= 2;  // 16
+x ??= 10; // только если x был null/undefined
+</code></pre>
+
+      <h3>Сравнение</h3>
+      <pre><code>5 > 3      // true
+5 < 3      // false
+5 >= 5     // true
+5 == '5'   // true
+5 === '5'  // false
+5 !== '5'  // true
+</code></pre>
+
+      <h3>Логические</h3>
+      <pre><code>true && false      // false
+true || false      // true
+!true              // false
+
+const name = userInput || 'Аноним';
+const city = user && user.address && user.address.city;
+const port = config.port ?? 3000;
+</code></pre>
+
+      <h3>Опциональная цепочка</h3>
+      <pre><code>const user = { profile: { name: 'Alex' } };
+
+console.log(user?.profile?.name);   // 'Alex'
+console.log(user?.settings?.theme); // undefined
+</code></pre>
+
+      <h3>Тернарный оператор</h3>
+      <pre><code>const msg = count > 0 ? 'Есть' : 'Пусто';
+</code></pre>
+
+      <h3>Spread и Rest</h3>
+      <pre><code>// Spread
+const arr1 = [1, 2];
+const arr2 = [...arr1, 3, 4];       // [1, 2, 3, 4]
+const obj2 = { ...{ a: 1 }, b: 2 }; // { a: 1, b: 2 }
+
+// Rest
+function sum(...nums) {
+  return nums.reduce((s, n) => s + n, 0);
+}
+sum(1, 2, 3, 4); // 10
+</code></pre>
+
+      <p><a href="../functions/">Дальше: Функции →</a></p>
+    </main>
+
+    <footer>
+      <hr />
+      <p>
+        © 2026 JavaScript Docs. Учебный проект для лабораторных работ по CDN.
+      </p>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Синтаксис - JavaScript Docs</title>
+    <link rel="stylesheet" href="../style.css" />
+  </head>
+  <body>
+    <header>
+      <h1><a href="../index.html">JavaScript Docs</a></h1>
+      <nav>
+        <a href="../index.html">Главная</a> |
+        <a href="../getting-started/">Начало работы</a> |
+        <a href="index.html">Основы</a> | <a href="../functions/">Функции</a> |
+        <a href="../objects/">Объекты</a> |
+        <a href="../async/">Асинхронность</a> |
+        <a href="../examples/">Примеры</a> | <a href="../faq.html">FAQ</a> |
+        <a href="../changelog.html">История версий</a>
+      </nav>
+      <hr />
+    </header>
+
+    <main>
+      <p><a href="../index.html">Главная</a> / Основы</p>
+
+      <h2>Синтаксис JavaScript</h2>
+
+      <h3>Переменные</h3>
+      <pre><code>var a = 1;     // устаревшее, функциональная область видимости
+let b = 2;     // изменяемая, блочная область
+const c = 3;   // неизменяемая привязка
+</code></pre>
+      <p>
+        Используйте <code>const</code> по умолчанию, <code>let</code> - когда
+        значение будет меняться. <code>var</code> - только для legacy-кода.
+      </p>
+
+      <h3>Строгий режим</h3>
+      <pre><code>'use strict';
+x = 10; // ReferenceError
+</code></pre>
+
+      <h3>Комментарии</h3>
+      <pre><code>// Однострочный
+
+/* Многострочный
+   комментарий */
+</code></pre>
+
+      <h3>Условные конструкции</h3>
+      <pre><code>const age = 20;
+
+if (age >= 18) {
+  console.log('Совершеннолетний');
+} else if (age >= 14) {
+  console.log('Подросток');
+} else {
+  console.log('Ребёнок');
+}
+
+const status = age >= 18 ? 'adult' : 'minor';
+</code></pre>
+
+      <h3>Циклы</h3>
+      <pre><code>for (let i = 0; i < 3; i++) console.log(i);
+
+let j = 0;
+while (j < 3) { console.log(j); j++; }
+
+for (const item of [10, 20, 30]) console.log(item);
+for (const key in { a: 1, b: 2 }) console.log(key);
+</code></pre>
+
+      <h3>Правила оформления</h3>
+      <ul>
+        <li>Отступ - 2 или 4 пробела, единообразно.</li>
+        <li>Имена переменных - <code>camelCase</code>.</li>
+        <li>Классы - <code>PascalCase</code>.</li>
+        <li>Константы - <code>UPPER_SNAKE_CASE</code>.</li>
+      </ul>
+
+      <p>
+        <a href="types.html">Дальше: Типы данных →</a>
+      </p>
+    </main>
+
+    <footer>
+      <hr />
+      <p>
+        © 2026 JavaScript Docs. Учебный проект для лабораторных работ по CDN.
+      </p>
+    </footer>
+  </body>
+</html>
